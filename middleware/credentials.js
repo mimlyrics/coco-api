@@ -1,6 +1,6 @@
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://trace-cocoa.api.onrender.com'
+    'https://tracecocoa.onrender.com'
 ];
 const credentials = (req, res, next) => {
     const origin = req.headers.origin;
