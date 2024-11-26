@@ -10,10 +10,14 @@ const db = require("./db");
 const sequelize = require("./sequelize");
 const { importDatas } = require('./import_xlsx');
 const path = require("path");
+
+
 const cors = require("cors");
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
+const credentials = require("./middleware/credentials");
+app.use(credentials);
 
 app.use(express.json());
 
@@ -40,13 +44,11 @@ app.use(
   },
 ))
 
-const credentials = require("./middleware/credentials");
-app.use(credentials);
-
 // create App Database if not exists
-(async function(){
+/*(async function(){
   db.createDb(process.env.DB_NAME);
-})();
+})();*/
+
 
 // Synchroniser les modèles avec la base de données
 /*sequelize.sync({force: true})
