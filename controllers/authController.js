@@ -18,7 +18,7 @@ exports.register = async (req, res) => {
       }
     });
   } catch (err) {
-    res.status(400).json({
+    res.status(500).json({
       message: "Impossible de créé l'utilisateur",
       error: err
     });
@@ -26,6 +26,7 @@ exports.register = async (req, res) => {
 }
 
 exports.login = async (req, res) => {
+  console.log(req.body);
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ where: { username } });
@@ -56,7 +57,7 @@ exports.login = async (req, res) => {
 
     res.status(200).json({ message: 'Connexion réussie', user, token });
   } catch (err) {
-    res.status(400).json({ message: "Une erreur s'est produite pendant la connexion", error: err.message });
+    res.status(500).json({ message: "Une erreur s'est produite pendant la connexion", error: err.message });
   }
 }
 
@@ -70,6 +71,6 @@ exports.logout = async (req, res) => {
 
     res.status(200).json({ message: 'Déconnexion...' });
   } catch (err) {
-    res.status(400).json({ message: "Une erreur s'est produite pendant la connexion", error: err.message });
+    res.status(500).json({ message: "Une erreur s'est produite pendant la connexion", error: err.message });
   }
 }

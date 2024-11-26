@@ -75,5 +75,5 @@ app.use(`${routeHead}/static`, express.static(path.join(__dirname, "resources/ge
 //console.log(path.join(__dirname, "resources/tiles/Mapnik"));
 
 app.listen(port, () => {
-  console.log(`L'API est disponible via http://localhost:${port}`);
+  console.log(`L'API est disponible via https//:${port}`);
 });
