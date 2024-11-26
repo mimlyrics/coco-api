@@ -20,12 +20,12 @@ const credentials = require("./middlewares/credentials");
 app.use(credentials);
 let corsOptions = {
     credentials: true,
-    origin: 'https://tracecocoa-api.onrender.com',   
+    origin: 'https://tracecocoa.onrender.com',   
     //origin: 'http://localhost:3000', 
     method: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']   
 }
 
-var allowedOrigins = [ 'http://localhost:3001','https://tracecocoa-api.onrender.com']
+var allowedOrigins = [ 'http://localhost:3001','https://tracecocoa.onrender.com']
 
 app.use(
   cors( {
