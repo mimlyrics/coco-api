@@ -20,15 +20,19 @@ app.use(express.urlencoded({extended: false}));
 const port = process.env.PORT || 5000;
 const credentials = require("./middleware/credentials");
 app.use(credentials);
-
+var allowedOrigins = [ 'http://localhost:3000','https://tracecocoa.onrender.com']
 let corsOptions = {
     credentials: true,
-    origin: 'https://tracecocoa.onrender.com',   
-    //origin: 'http://localhost:3000', 
-    method: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']   
-}
+    origin: function(origin, callback) {
+        if(allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        }else {
+            callback(new Error('Not allowed by cors'));
+        }
+    },
+    methods: ["GET, POST, PUT, DELETE"],
+  }
 
-var allowedOrigins = [ 'http://localhost:3000','https://tracecocoa.onrender.com']
 
 app.use(
   cors( corsOptions
