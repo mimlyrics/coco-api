@@ -15,11 +15,11 @@ const path = require("path");
 const cors = require("cors");
 require('dotenv').config();
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 const port = process.env.PORT || 5000;
 const credentials = require("./middleware/credentials");
 app.use(credentials);
-
-app.use(express.json());
 
 let corsOptions = {
     credentials: true,
