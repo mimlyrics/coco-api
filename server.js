@@ -28,25 +28,15 @@ let corsOptions = {
     method: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']   
 }
 
-var allowedOrigins = [ 'http://localhost:3001','https://tracecocoa.onrender.com']
+var allowedOrigins = [ 'http://localhost:3000','https://tracecocoa.onrender.com']
 
 app.use(
-  cors( {
-    credentials: true,
-    origin: function(origin, callback) {
-        if(allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        }else {
-            callback(new Error('Not allowed by cors'));
-        }
-    },
-    methods: ["GET, POST, PUT, DELETE"],
-  },
+  cors( corsOptions
 ))
 
 // create App Database if not exists
 /*(async function(){
-  db.createDb(process.env.DB_NAME);
+  db.createDb('cacaoapp');
 })();*/
 
 
