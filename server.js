@@ -27,8 +27,8 @@ let corsOptions = {
 
 var allowedOrigins = [ 'http://localhost:3001','https://tracecocoa-api.onrender.com']
 
-app.use({
-  cors: {
+app.use(
+  cors( {
     credentials: true,
     origin: function(origin, callback) {
         if(allowedOrigins.indexOf(origin) !== -1) {
@@ -39,7 +39,7 @@ app.use({
     },
     methods: ["GET, POST, PUT, DELETE"],
   },
-})
+))
 
 // create App Database if not exists
 (async function(){
