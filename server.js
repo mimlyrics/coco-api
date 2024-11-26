@@ -41,12 +41,12 @@ app.use(
 
 
 // Synchroniser les modèles avec la base de données
-/*sequelize.sync({force: true})
+sequelize.sync({force: true})
 .then(async () => {
   console.log("Les tables ont été synchronisées");
   await importDatas();
 })
-.catch((err) => console.log("Erreur : " + err));*/
+.catch((err) => console.log("Erreur : " + err));
 
 // Importer les données excels
 
